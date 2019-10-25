@@ -10,7 +10,7 @@ Tips  for Migrating Python 2.7.x to  3.x  from python community
 
 ## Here are some snippets for yo to focus on while migrating
 
-```
+```python
 
 class SomeClassWithoutBaseClass:                    ==> class SomeClassWithoutBaseClass(object):
 
