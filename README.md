@@ -8,3 +8,33 @@ Tips  for Migrating Python 2.7.x to  3.x  from python community
 * Majority of the problems is due to the Text v/s binary data returned by functions more details for better understanding: https://blog.feabhas.com/2019/02/python-3-unicode-and-byte-strings/
 
 
+## Here are some snippets for yo to focus on while migrating
+
+```
+
+class SomeClassWithoutBaseClass:                    ==> class SomeClassWithoutBaseClass(object):
+
+base_product.validate = lambda (payload): payload  	==>  base_product.validate = lambda payload : payload
+event = {k: to_str(v) for k, v in event.items()}  	==> event = {k: to_str(v) for k, v in list(event.items())}
+for key, value in upstream_catalog.iteritems():			==>   for key, value in upstream_catalog.items():
+        merged_catalog.setdefault(key, value)										merged_catalog.setdefault(key, value)
+
+VOUCHER_PATTERN = '[\d\l]{{{length}}}'              ==>   VOUCHER_PATTERN = r'[\d\l]{{{length}}}'
+
+map(lambda item: item.someFunc(), results)  				==> 		list(map(lambda item: item.someFunc(), results))
+
+
+cashed = int(round((float(cash) / tot_amt) * 100))  		==> cashed = int(round((float(cash) // tot_amt) * 100))
+
+
+for keytuple in purchases_products.keys():   				==>  for keytuple in list(purchases_products.keys():
+
+
+return products_by_id.values()    									==> return list(products_by_id.values())
+
+
+return unicode(self.template).format(**self.kwargs) 		==> return str(self.template).format(**self.kwargs)
+
+
+```
+
