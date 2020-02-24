@@ -36,5 +36,12 @@ return products_by_id.values()    									==> return list(products_by_id.values
 return unicode(self.template).format(**self.kwargs) 		==> return str(self.template).format(**self.kwargs)
 
 
+try:
+    # py3 moved to collections package
+    from collections import UserDict        # noqa
+except ImportError:
+    from UserDict import UserDict           # noqa
+    
+
 ```
 
